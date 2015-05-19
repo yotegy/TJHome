@@ -1,16 +1,16 @@
 
 
-# Testopia.Report
+# TJ's Home
+ I'm TJ.
+ I'll make awesome cyber home for myself.
+ 
+ Please take seat and enjoy the new world.
 
 
 
 ## Usage
 
-
-
-## Developing
-
-
+None
 
 ### Tools
 
