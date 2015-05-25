@@ -1,9 +1,10 @@
-var express = require('express');
-var router = express.Router();
+var mysql = require('mysql');
 
-/* GET users listing. */
-router.get('/', function(req, res, next) {
-  res.send('Test Result...');
+var pool = mysql.createPool({
+	host : 'localhost',
+	user : 'root',
+	password : 'korea',
+	databese : 'tjhome'
 });
 
-module.exports = router;
+exports.pool = pool;

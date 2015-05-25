@@ -9,6 +9,8 @@ var routes = require('./routes/index');
 var users = require('./routes/users');
 var testresults = require('./routes/testresults');
 
+var dbconfig = require('./dbconnection').pool;
+
 var app = express();
 
 // view engine setup
@@ -23,10 +25,24 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
+// Router
+// common settin
+  // DB
+  app.use(function(req,res,next){
+	 
+	 req.dbconfig = dbconfig;	  
+	 next(); 
+	 
+  });
+
+
+// route-specific
 app.use('/', routes);
 app.use('/users', users);
 app.use('/TestResults',testresults);
 
+
+// If there is no matched-URL
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   var err = new Error('Not Found');
