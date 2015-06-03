@@ -4,6 +4,12 @@ var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
+var argv = require('minimist')(process.argv.slice(2));
+
+//[SWAGGER]
+var swagger = require('swagger-node-express')
+	, test = require('./models/test')
+	, models = require('./models/models');
 
 var routes = require('./routes/index');
 var users = require('./routes/users');
@@ -12,6 +18,60 @@ var testresults = require('./routes/testresults');
 var dbconfig = require('./dbconnection').pool;
 
 var app = express();
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: false }));
+
+
+app.use('/js', express.static(path.join(__dirname, 'js')));
+app.use('/lib', express.static(path.join(__dirname, 'lib')));
+app.use('/css', express.static(path.join(__dirname, 'css')));
+app.use('/images', express.static(path.join(__dirname, 'images')));
+ 
+
+//[SWAGGER] Set the main handler in swagger
+swagger.setAppHandler(app);
+
+//[SWAGGER] Adding models and methods to our RESTFul service
+swagger.addModels(models)
+    .addGet(test.dummyTestMethod)
+	.addGet(test.testresults);
+
+//[SWAGGER] set api info
+swagger.setApiInfo({
+    title: "TJ Home Application",
+    description: "API Test",
+    termsOfServiceUrl: "",
+    contact: "yotegy@gmail.com",
+    license: "TJ",
+    licenseUrl: ""
+});
+
+//Set api-doc path
+swagger.configureSwaggerPaths('', 'api-docs', '');
+
+
+//Configure the API domain
+var domain = 'localhost';
+if(argv.domain !== undefined){
+    domain = argv.domain;
+}else{
+    console.log('No --domain=xxx specified, taking default hostname "localhost".');
+}
+
+// Configure the API port
+var port = 3456;
+if(argv.port !== undefined){
+    port = argv.port;
+}else{
+    console.log('No --port=xxx specified, taking default port ' + port + '.');
+}
+
+// Set and display the application URL
+var applicationUrl = 'http://' + domain + ':' + port;
+console.log('snapJob API running on ' + applicationUrl);
+ 
+swagger.configure(applicationUrl, '1.0.0');
+ 
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -37,7 +97,10 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 
 // route-specific
-app.use('/', routes);
+//app.use('/', routes);
+app.get('/', function (req, res) {
+    res.sendfile(__dirname + '/index.html');
+});
 app.use('/users', users);
 app.use('/TestResults',testresults);
 
