@@ -1,9 +1,12 @@
 var express = require('express');
 var router = express.Router();
+var userlist = require('../private/UserList.js');
+
 
 /* GET users listing. */
 router.get('/', function(req, res, next) {
-  res.send(JSON.stringify('respond with a resource'));
+	
+  userlist.showusers(req,res,next);
 });
 
 module.exports = router;

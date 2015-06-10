@@ -1,10 +1,15 @@
 extends layout
 
 block content
-  h1= title
-  p Welcome to #{title}
-  ul
-   li
-    a(href='/testresults') Testresults
-   li
-    a(href='/users') Users  
+  script(src='js/ReportApp.js')
+  script(src='js/UserController.js')
+  body(ng-app='ReportApp')
+    div(ng-controller='UserController')
+      h1 {{ firstName +&quot; &quot;+lastName }}
+      br
+      h2 Name_list
+      br 
+      div(ng-repeat=' d in data | filter:query')
+       h2 ID : {{ d.id }} , Name : {{ d.name }} , Age : {{ d.age }}
+      h2 SUM : {{ sum }}
+      input(ng-model='query')

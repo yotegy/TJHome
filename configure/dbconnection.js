@@ -7,6 +7,6 @@ var pool = mysql.createPool({
 	database : 'tjhome'
 });
 
-export.pool = pool;
+exports.pool = pool;
 
 
