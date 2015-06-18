@@ -4,7 +4,9 @@ var router = express.Router();
 /* GET home page. */
 router.get('/', function(req, res, next) {
 	console.log(req.query.number);
-	res.render('index');
+	
+	var user_id = { UserID : "None" };
+	res.render('index',user_id);
 });
 
 module.exports = router;

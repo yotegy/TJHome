@@ -15,12 +15,11 @@
 				<h2>{{ d }}</h2>
 			</div>
 			
-			<input ng-model="number">
-			<select>
-			  <option value="volvo">Volvo</option>
-			  <option value="saab">Saab</option>
-			  <option value="mercedes">Mercedes</option>
-			  <option value="audi">Audi</option>
+			<input ng-model="number" value="123">
+			<select ng-model="model.id" convert-to-number>
+			  <option value="0">Zero</option>
+			  <option value="1">One</option>
+			  <option value="2">Two</option>
 			</select>
 		</div>	
 	</body>
