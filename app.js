@@ -7,6 +7,7 @@ var bodyParser = require('body-parser');
 var argv = require('minimist')(process.argv.slice(2));
 
 var index = require('./routes/index');
+var test = require('./routes/test');
 var users = require('./routes/users');
 var testresults = require('./routes/testresults');
 
@@ -49,6 +50,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 // route-specific
 app.use('/',index);
+app.use('/test',test);
 app.use('/users', users);
 app.use('/TestResults',testresults);
 

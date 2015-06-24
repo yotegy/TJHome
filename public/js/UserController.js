@@ -1,7 +1,7 @@
 app.controller('UserController', function($scope,$http) {
-    $scope.firstName= "Kim";
-    $scope.lastName= "TJ";
     
+	$scope.firstName= "Kim";
+    $scope.lastName= "TJ";    
     
     var url="http://localhost:3456/users?number=";
     
@@ -24,10 +24,8 @@ app.controller('UserController', function($scope,$http) {
     $scope.mySwitch = false;
     $scope.myImage = false;
     $scope.mySum = false;
-    
-    
+        
     $scope.count = 0;
-    
     
     
 });
