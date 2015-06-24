@@ -5,14 +5,14 @@ block content
   script(src='/js/UserController.js')
   body(ng-app='ReportApp')
     div(ng-controller='UserController',ng-init='message="hello"')
-      h1 {{ firstName +&quot; &quot;+lastName +" "+count+" "+setnum }}
+      h1 {{ firstName +&quot; &quot;+lastName +" "+count+" "+setnum }} + #{UserID}
       br
       h2 Name_list modified
       br 
       div(ng-repeat=" d in data | filter:query ")
        h2 ID : {{ d.id }} , Name : {{ d.name }} , Age : {{ d.age }} , Index : {{ $index }}, EvenOdd : {{ $odd }}
       h2(ng-hide='mySum') SUM : {{ sum }}
-      input(value="111",ng-model='query')
+      input(value="#{UserID}",ng-model='query')
       h1 what
       br 
       div(ng-repeat="n in [42, 42, 43, 43] track by $index")
@@ -20,7 +20,7 @@ block content
       br
       h1 Test Data
       form(name='testForm', novalidate='')
-       button(ng-disabled='mySwitch',ng-click='count=count+1') Click Me!
+       button(ng-disabled='mySwitch',ng-click='reload()') Click Me!
        button(ng-disabled='testForm.setnum.$invalid || testForm.setnum.$pristine',ng-click='showlist()') Show me List!
        input(type='number', name='setnum', ng-model='setnum' required)
        span(style='color:red', ng-show='testForm.setnum.$invalid && testForm.setnum.$dirty')
@@ -33,9 +33,7 @@ block content
         | show_Image
         input(type='checkbox', ng-model='mySum')
         | show_mySum
-      
       div
        image(src='/image/pororo01.jpg',ng-show='myImage')
        p
         {{ count }}
-      

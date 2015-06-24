@@ -6,7 +6,7 @@ router.get('/', function(req, res, next) {
 	console.log(req.query.number);
 	
 	var user_id = { UserID : "None" };
-	res.render('index',user_id);
+	res.render('test',user_id);
 });
 
 module.exports = router;
