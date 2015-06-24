@@ -11,6 +11,7 @@ router.get('/', function(req, res, next) {
 
 router.get('/:UserID',function(req,res,next){
 	var user_id = { UserID :req.params.UserID };
+	console.log(user_id);
 	res.render('index',user_id);
 });
 
