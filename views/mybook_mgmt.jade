@@ -1,0 +1,12 @@
+extends layout
+
+block content
+  script(src='/js/mybook/mybookApp.js')
+  script(src='/js/mybook/mybookInsert.js')
+  body(ng-app='mybook')
+    div(ng-controller='mybookInsertController')
+     .jumbotron
+      center
+        h1  MyBook List 
+        a(href='#/insert') click me
+     div(ng-view='')

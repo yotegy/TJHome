@@ -26,6 +26,5 @@ app.controller('UserController', function($scope,$http) {
     $scope.mySum = false;
         
     $scope.count = 0;
-    
-    
+        
 });
