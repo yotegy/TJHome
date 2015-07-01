@@ -9,5 +9,22 @@ html
     link(rel='stylesheet', href='/stylesheets/style.css')  
     script(src='http://ajax.googleapis.com/ajax/libs/angularjs/1.3.16/angular.min.js')
     script(src='http://ajax.googleapis.com/ajax/libs/angularjs/1.3.16/angular-route.js')
-    | &#x9;
+    
+body
+  h4
+   a(href='/') Home
+  
   block content
+  
+  footer.navbar.navbar-inverse.navbar-fixed-bottom
+    .container(role='contentinfo')
+        .row
+          .col-sm-12
+            .row
+              .col-md-12
+                ul.list-inline.text-muted
+                  li footer description
+        .row
+          .col-md-12
+            p.text-right.text-muted
+              | MIT License.
