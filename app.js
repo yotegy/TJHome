@@ -11,6 +11,7 @@ var test = require('./routes/test');
 var users = require('./routes/users');
 var testresults = require('./routes/testresults');
 var mybookmgmt = require('./routes/mybookmgmt');
+var elastic = require('./routes/elastic');
 
 var app = express();
 app.use(bodyParser.json());
@@ -55,6 +56,7 @@ app.use('/test',test);
 app.use('/users', users);
 app.use('/TestResults',testresults);
 app.use('/myBookmgmt',mybookmgmt);
+app.use('/elastic',elastic);
 
 
 // If there is no matched-URL
