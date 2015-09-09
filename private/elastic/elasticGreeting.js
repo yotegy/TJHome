@@ -12,9 +12,9 @@ exports.greeting=function(req,res,next){
 		
 		index : 'junit_result',
 		type : 'testcyclerun',
-		id : '2015-07-03',
+		//id : '2015-07-10',
 		body: { 
-			time : "2015-07-04",
+			time : "2015-07-13",
 			tc:	[{
 				classname : "com.sds.test",
 				name : "plus",
@@ -25,7 +25,13 @@ exports.greeting=function(req,res,next){
 				classname : "com.sds.test",
 				name : "minus",
 				status : "fail",
-				failuer : "sex"
+				failure : "This is not my biz"
+			},
+			{
+				classname : "com.sds.test",
+				name : "hello",
+				status : "fail",
+				failure : "This is wrong data"
 			}]
 			
 		}

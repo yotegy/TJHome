@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "devstart": "nodemon ./bin/www",
+    "devstart": "supervisor ./bin/www",
     "start": "forever start ./bin/www"
   },
   "dependencies": {
@@ -19,6 +19,7 @@
     "morgan": "~1.5.1",
     "mysql": "~2.6.2",
     "sequelize": "~3.0.0",
-    "serve-favicon": "~2.2.0"
+    "serve-favicon": "~2.2.0",
+    "xml2js": "^0.4.9"
   }
 }

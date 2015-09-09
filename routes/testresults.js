@@ -4,6 +4,7 @@ var bodyparser = require('body-parser');
 var multer = require('multer');
 var file = require('fs');
 var xml2json = require('node-xml2json');
+var parseString = require('xml2js').parseString;
 var app = express();
 
 app.use(bodyparser.urlencoded({ extended: false }));
@@ -12,7 +13,12 @@ app.use(bodyparser.json());
 
 /* GET Test Results listing. */
 router.get('/', function(req, res, next) {
-  res.send(JSON.stringify('Test Result List will come sooner or later...'));
+  res.json({ mes : 'Test Result List will come sooner or later...' });
+});
+
+
+router.get('/details', function(req, res, next) {
+	  res.json({mes:'details code'});
 });
 
 /* Post Test Result input */
@@ -38,7 +44,12 @@ router.post('/',[multer({ dest: './uploads/'}), function(req,res,next){
 			if (err) throw err;
 			//console.log("file data: "+data);
 			json_data = xml2json.parser(" "+data);
-			console.log(json_data.testsuite.testcase);			
+			console.log(json_data.testsuite);
+			
+			parseString(data, function (err, result) {
+			    console.dir(result.testsuite.testcase[2].failure);
+			});
+			
 		});
 				
 		if(req.files.hasOwnProperty(key)){

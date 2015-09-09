@@ -1,0 +1,13 @@
+extends ../layout
+
+
+block content
+  script(src='/TJ/chart/ChartApp.js')
+  
+  body(ng-app='ChartApp')
+   div(ng-controller='ChartController')
+    h1 LineWithFocusChart Test Web
+    nvd3-line-with-focus-chart#exampleId(data='exampleData', width='1200', margin='{left:80,top:10,bottom:10,right:50}', margin2='{left:80,top:10,bottom:10,right:50}', yaxistickformat='yAxisTickFormatFunction()', height='400', isarea='true', tooltips='true', interactive='true')
+     svg
+     
+    h3 made by {{ lastName }}

@@ -12,6 +12,7 @@ var users = require('./routes/users');
 var testresults = require('./routes/testresults');
 var mybookmgmt = require('./routes/mybookmgmt');
 var elastic = require('./routes/elastic');
+var chartpage = require('./routes/chart');
 
 var app = express();
 app.use(bodyParser.json());
@@ -57,7 +58,7 @@ app.use('/users', users);
 app.use('/TestResults',testresults);
 app.use('/myBookmgmt',mybookmgmt);
 app.use('/elastic',elastic);
-
+app.use('/chart',chartpage);
 
 // If there is no matched-URL
 // catch 404 and forward to error handler
